@@ -9,7 +9,7 @@ export const description = () => 'What is the result of the expression?';
 export default () => {
   const number1 = getRandomInt();
   const number2 = getRandomInt();
-  const operator = OPERATORS[getRandomInt(2)];
+  const operator = OPERATORS[getRandomInt(3)];
   const expression = `${number1} ${operator} ${number2}`;
   // TODO: change eval to func
   const correctAnswer = String(eval(expression));
