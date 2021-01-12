@@ -1,6 +1,5 @@
-import readlineSync from 'readline-sync';
-
-const getRandomInt = (max = 100) => Math.floor(Math.random() * Math.floor(max));
+import engine from '../index.js';
+import getRandomInt from '../utilities.js';
 
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
@@ -11,15 +10,12 @@ const isPrime = (num) => {
   return num > 1;
 };
 
-export const description = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-export default () => {
-  const number = getRandomInt();
-  console.log(`Question: ${number}`);
-  const correctAnswer = isPrime(number) ? 'yes' : 'no';
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (userAnswer !== correctAnswer) {
-    const error = { userAnswer, correctAnswer };
-    throw error;
-  }
+const game = () => {
+  const question = getRandomInt();
+  const correctAnswer = isPrime(question) ? 'yes' : 'no';
+  return { question, correctAnswer };
 };
+
+export default () => engine(game, description);
