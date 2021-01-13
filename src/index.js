@@ -1,12 +1,10 @@
 import readlineSync from 'readline-sync';
-import brainGames from './games/brain-games.js';
-import { getName } from './cli.js';
 
 const MIN_CORRECT_ANSWERS = 3;
 
 export default (game, description) => {
-  brainGames();
-  const userName = getName();
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
   console.log(description);
   let correctAnswers = 0;
   while (correctAnswers < MIN_CORRECT_ANSWERS) {
